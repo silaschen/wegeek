@@ -1,0 +1,52 @@
+<?php 
+namespace app\handler\index;
+include_once "auto.php";
+use helper\redisClient;
+use helper\Assist;
+use read\AipSpeech;
+function executeRequest(){
+	$handler = new IndexHandler();
+	$handler->run();
+}
+
+/**
+* index
+* author chenswsssssssssssssssss
+*/
+class IndexHandler
+{
+	
+	public function run(){
+		$action = filter_input(INPUT_GET, 'action');
+		switch ($action) {
+			case 'index':
+				$this->index();
+				break;
+			case 'test':
+				$this->test();
+				break;
+			default:
+				$this->index();
+				break;
+		}
+	}
+
+
+	function __call($fun,$param){
+		echo "calling unknown method".$fun."the param is";
+		var_dump($param);
+	}
+
+
+	function test(){
+		echo "hello,git";
+	
+	}
+	public function index(){
+		
+   //   		$obj = new \helper\help('jerry');
+			// echo $obj->name;
+		phpinfo();
+	}
+          
+}
